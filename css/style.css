@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+  display: flex;
+  box-sizing: border-box;
+  min-height: 100vh;
+  flex-direction: column;
+  font-family: 'Open Sans', sans-serif;
+  background-color: black;
+  color: white;
+}
+h1 {
+  font-family: 'Crete Round', serif;
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+}
+.map {
+  flex-grow: 1;
+}
