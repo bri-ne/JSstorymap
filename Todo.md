@@ -1,0 +1,6 @@
+- [x] Clean up the SchoolCensus Data to only include the cols I need
+  - [x] figuring out what columns to collapse and combine, e.g age
+  - [x] change pop to a percentage
+- [ ] figure out how to show school stats without having weird coloring
+- [ ] **could do buffer around camera and join to census blockgroups its in, take ave of race makeup and add pop up for each camera**
+  - [ ] and then do choropleth for parks, school funding, trees?, libraries (distance to nearest), and grocery stores (distance to nearest), airbnbs? (number of them in each block group?)
