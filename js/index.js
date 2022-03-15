@@ -56,8 +56,8 @@ function styleSchoolFunding(feature) {
 
 function onEachFeatureSchoolFunding(feature, layer){
   //use feature.properties to construct popup html
-  var popupContentFunding = '<p>' + 'School: ' + feature.properties.School + '<br>' +'Funding per Pupil: ' + feature.properties.TotalTotal + '</p>' + 
-   '<p>' + '30% Income: ' + feature.properties.P30P.toString() + '</p>' ;
+  var popupContentFunding = `<p> School: ${feature.properties.School} <br> Funding per Pupil: ${feature.properties.TotalTotal} </p> 
+  <p> 30% Income: ${feature.properties.P30P} </p>`;
 
   layer.bindPopup(popupContentFunding);
   };
@@ -109,11 +109,25 @@ fetch(rtcc)
 .then(data => {
   L.geoJSON(data, {onEachFeature: function(feature) {
     var markersClust = new L.MarkerClusterGroup();
+    var marker = L.marker([feature.geometry.coordinates[1], feature.geometry.coordinates[0]]);
+    markersClust.addLayer(marker);
+    markersClust.addTo(map)
+    }});
+});
+
+/*
+fetch(rtcc)
+.then(resp => resp.json())
+.then(data => {
+  L.geoJSON(data, {onEachFeature: function(feature) {
+    var markersClust = new L.MarkerClusterGroup();
     markersClust.addLayer(L.marker([feature.geometry.coordinates[1], feature.geometry.coordinates[0]], 
       {icon: markerCustom}));
     markersClust.addTo(map)
     }});
 });
+
+*/
 
 L.marker([29.87048922812714, -90.00716378733559], 
   {icon: nopdIcon}).addTo(map);
