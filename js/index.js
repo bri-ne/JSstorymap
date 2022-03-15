@@ -1,5 +1,5 @@
 
-let map = L.map('map').setView([29.98, -90.06], 14);
+let map = L.map('map').setView([29.9652, -90.09820], 13);
 
 let SchoolCensus = 'https://raw.githubusercontent.com/bri-ne/JSstorymap/main/Data/SchoolCensus.geojson'
 let rtcc = 'https://raw.githubusercontent.com/bri-ne/JSstorymap/main/Data/RTCC4326.geojson'

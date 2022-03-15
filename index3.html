@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Surviellance In New Orleans</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+  
+  <!-- Heading or Title Font-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crete+Round:ital@0;1&display=swap" rel="stylesheet"> 
+  <!-- Paragraph Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crete+Round:ital@0;1&family=Poppins:ital,wght@0,400;0,500;0,600;1,500;1,600&display=swap" rel="stylesheet"> 
+
+</head> 
+<body>
+
+
+  <div class="top-bar">
+    <h1>
+    Suveillance in New Orleans
+    </h1>
+  </div>
+  <div class="all-content">
+    
+    <div id="map" class="map">map</div>
+    
+    <div class="slide-side">
+
+      <div class="slide-content">
+       <h2>my slide content</h2> 
+       <p>and some more content </p>
+      </div>
+      <div class="slide-controls">
+        <button class="slide-butt" id="prev-slide"><div class="button-text">&#x2b05;</div></button>
+        <button class="slide-butt" id="next-slide"><div class="button-text">&#x2b95;</div></button> 
+          
+      
+      </div>
+      </div>
+    </div>
+    <div id="overlay"></div>
+    <div id="popup">
+      <div>
+        <span id="popupclose">X</span>
+      </div>
+      <div class="popupcontent">
+          <h1>Some Popup Content</h1>
+      </div>
+
+  </div>
+
+
+
+  <script type="text/javascript">
+    // Initialize Variables
+    var closePopup = document.getElementById("popupclose");
+    var overlay = document.getElementById("overlay");
+    var popup = document.getElementById("popup");
+ 
+    // Close Popup Event
+    closePopup.onclick = function() {
+        overlay.style.display = 'none';
+        popup.style.display = 'none';
+    };
+  </script>
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>        
+  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+  <script src="js/index3.js"></script>
+</body>
+</html>
