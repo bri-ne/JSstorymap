@@ -23,7 +23,7 @@
 
   <div class="top-bar">
     <h1>
-    Suveillance in New Orleans
+    Surveillance in New Orleans
     </h1>
   </div>
   <div class="all-content">
@@ -31,7 +31,7 @@
     <div id="map" class="map">map</div>
     
     <div class="slide-side">
-
+      <div class="slide-title"></div>
       <div class="slide-content">
        <h2>my slide content</h2> 
        <p>and some more content </p>
@@ -50,13 +50,18 @@
         <span id="popupclose">X</span>
       </div>
       <div class="popupcontent">
-          <h1>Some Popup Content</h1>
+          <h1 style="padding-top: 3rem; padding-left: 3rem;">Disclaimer: </h1>
+          <p style="padding-left: 3rem; padding-right: 3rem">
+            This project is in the works. 
+            What is shown here consists of preliminary and mostly 
+            exploratory research. Please also note that the author 
+            is not an expert in any field touched on in this report. 
+            If you see something incorrect or that you consider as misinterpreted, 
+            please reach out to  <a href="mailto:cerb@upenn.edu">cerb@upenn.edu</a>. <br> <br>
+            Any and all feedback is welcome! </p>
       </div>
-
+     
   </div>
-
-
-
   <script type="text/javascript">
     // Initialize Variables
     var closePopup = document.getElementById("popupclose");
@@ -69,11 +74,14 @@
         popup.style.display = 'none';
     };
   </script>
-
+  
+  <script src="https://unpkg.com/showdown@1.9.0/dist/showdown.min.js"></script>
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>        
   <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+  <script src="js/slides.js"></script>
+  <script src="js/style.js"></script>
   <script src="js/index3.js"></script>
 </body>
 </html>

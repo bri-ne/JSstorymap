@@ -1,0 +1,35 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "slide": "slide_0",
+        "number": "0",
+        "label": "Real Time Crime Center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.06647950607848,
+          29.951968790904225
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "slide": "slide_2",
+        "number": "2",
+        "label": "LA SAFE"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.10848844499424,
+          30.449404976254158
+        ]
+      }
+    }
+  ]
+}
