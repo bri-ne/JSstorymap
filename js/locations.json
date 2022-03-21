@@ -5,8 +5,8 @@
       "type": "Feature",
       "properties": {
         "slide": "slide_0",
-        "number": "0",
-        "label": "Real Time Crime Center"
+        "label": "Real Time Crime Center",
+        "img": "<iframe width='560' height='315' src='https://www.youtube.com/embed/YOW4E-qKK7M' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>"
       },
       "geometry": {
         "type": "Point",
@@ -20,7 +20,49 @@
       "type": "Feature",
       "properties": {
         "slide": "slide_2",
-        "number": "2",
+        "label": "Mayor's Office",
+        "img": "<h3> Former Mayor Landrieu (front) and current Mayor Cantrell (to the right of Landrieu) </h3> <img src = 'img/mayors.jpg' height='297px' width='450px' />"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.07712330228571,
+          29.952038477848077
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "slide": "slide_2",
+        "label": "FBI"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.04274928888243,
+          30.030903083422412
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "slide": "slide_2",
+        "label": "NOPD"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.04274928888243,
+          30.030903083422412
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "slide": "slide_3",
         "label": "LA SAFE"
       },
       "geometry": {
@@ -30,6 +72,255 @@
           30.449404976254158
         ]
       }
-    }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "slide": "slide_3",
+        "label": "NOPD"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.04274928888243,
+          30.030903083422412
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "slide": "slide_3",
+        "label": "FBI"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.04274928888243,
+          30.030903083422412
+        ]
+      }  
+    },
+    {
+      "type": "Feature",
+    "properties":{
+      "objectid":"4",
+      "slide": "slide_3",
+      "label": "NOPD",
+      "name":"8th District",
+      "fulladdr":"334 Royal St"
+    },
+    "geometry":{
+      "type":"Point",
+      "coordinates": [
+        -90.066907987005,
+        29.955337710127
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "objectid":"8",
+        "slide": "slide_3",
+        "label": "NOPD",
+        "name":"7th District",
+        "fulladdr":"10101 Dwyer Rd"
+        },
+      "geometry":{
+        "type":"Point",
+        "coordinates": [
+          -89.968359700173,
+          30.02740011287
+          ]
+        }
+      },
+      {
+        "type":"Feature",
+        "properties":{
+          "objectid":"13",
+          "slide": "slide_3",
+          "label": "NOPD",
+          "name":"5th District",
+          "fulladdr":"3900 North Claiborne Avenue"
+        },
+        "geometry":{
+          "type":"Point",
+          "coordinates":[
+            -90.034177819582,
+            29.970569620471
+            ]
+          }
+        },
+      {
+        "type":"Feature",
+        "properties":{
+          "objectid":"11",
+          "slide": "slide_3",
+          "label": "NOPD",
+          "name":"Traffic",
+          "fulladdr":"N. Jefferson Davis Pkwy"
+          },
+        "geometry":{
+          "type":"Point",
+          "coordinates":[
+            -90.090377287435,
+            29.97246381788
+            ]
+          }
+        },
+        {
+        "type":"Feature",
+        "properties":{
+          "objectid":"10",
+          "slide": "slide_3",
+          "label": "NOPD",
+          "name":"Mounted / K-9",
+          "fulladdr":"Marconi Dr. & Harrison Ave."
+          },
+        "geometry":
+        {
+          "type":"Point",
+          "coordinates":[
+            -90.097259084069,
+            30.004805441572
+            ]
+          }
+        },
+      {
+        "type":"Feature",
+        "properties":{
+          "objectid":"7",
+          "slide": "slide_3",
+          "label": "NOPD",
+          "name":"3rd District",
+          "fulladdr":"4650 Paris Ave"
+        },
+        "geometry":{
+          "type":"Point",
+          "coordinates":[
+            -90.074355853068,
+            30.005526715908
+            ]
+          }
+        },
+      {
+        "type":"Feature",
+        "properties":{
+          "objectid":"12",
+          "slide": "slide_3",
+          "label": "NOPD",
+          "name":"Facility Support",
+          "fulladdr":"N. Jefferson Davis Pkwy"
+        },
+        "geometry":{
+          "type":"Point",
+          "coordinates":[
+            -90.088766720309,
+            29.971581249358
+            ]
+          }
+        },
+        {
+          "type":"Feature",
+          "properties":{
+            "objectid":"5",
+            "slide": "slide_3",
+            "label": "NOPD",
+            "name":"1st District",
+            "fulladdr":"501 North Rampart St"
+            },
+          "geometry":{
+            "type":"Point",
+            "coordinates":[
+              -90.06989285814,
+              29.959235298914
+              ]
+            }
+          },
+          {
+            "type":"Feature",
+            "properties":{
+              "objectid":"9",
+              "slide": "slide_3",
+              "name":"SOD",
+              "label": "NOPD",
+              "fulladdr":"1899 Tchoupitoulas St."
+              },
+            "geometry":{
+              "type":"Point",
+              "coordinates":[
+                -90.06792560181,
+                29.925992338596
+                ]
+              }
+            },
+          {
+            "type":"Feature",
+            "properties":{
+              "objectid":"6",
+              "slide": "slide_3",
+              "label": "NOPD",
+              "name":"Headquarters",
+              "fulladdr":"715 S. Broad St"
+              },
+            "geometry":{
+              "type":"Point",
+              "coordinates":[
+                -90.092684052434,
+                29.960848783898
+                ]
+              }
+            },
+            {
+              "type":"Feature",
+              "properties":{
+                "objectid":"1",
+                "slide": "slide_3",
+                "label": "NOPD",
+                "name":"2nd District",
+                "fulladdr":"4317 Magazine St"
+              },
+              "geometry":{
+                "type":"Point",
+                "coordinates":[
+                  -90.100696034441,
+                  29.921038479874
+                  ]
+                }
+              },
+            {
+              "type":"Feature",
+              "properties":{
+                "objectid":"3",
+                "slide": "slide_3",
+                "label": "NOPD",
+                "name":"6th District",
+                "fulladdr":"1930 Martin Luther King Blvd"
+                },
+              "geometry":{"type":"Point",
+                "coordinates":[
+                  -90.080060892077,
+                  29.941417586269
+                  ]
+                }
+              },
+            {
+              "type":"Feature",
+              "properties":{
+                "objectid":"2",
+                "slide": "slide_3",
+                "label": "NOPD",
+                "name":"4th District",
+                "fulladdr":"2405 Sanctuary Dr"
+              },
+            "geometry":{
+              "type":"Point",
+              "coordinates":[
+                -90.033840189099,
+                29.950703291476
+                ]
+              }
+            } 
   ]
 }

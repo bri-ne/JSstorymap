@@ -8,8 +8,8 @@ let layerGroup = L.layerGroup().addTo(map);
 /* === This is my Data === */
 const SchoolCensus = 'https://raw.githubusercontent.com/bri-ne/JSstorymap/main/Data/SchoolCensus.geojson'
 const rtcc = 'https://raw.githubusercontent.com/bri-ne/JSstorymap/main/Data/RTCC4326.geojson'
-const demo = 'https://raw.githubusercontent.com/bri-ne/JSstorymap/main/Data/census/DEMO.geojson'
-const rent = 'https://raw.githubusercontent.com/bri-ne/JSstorymap/main/Data/census/Rent_BG4326.geojson'
+const demo = 'https://raw.githubusercontent.com/bri-ne/JSstorymap/main/Data/census/DemoCamera_BG4326.geojson'
+const rent = 'https://raw.githubusercontent.com/bri-ne/JSstorymap/main/Data/census/RentCamera_BG4326.geojson'
 const schoolData =  'https://raw.githubusercontent.com/bri-ne/JSstorymap/main/Data/schoolonly/SchoolData_geo3452.geojson'
 
 /* === These are my vars for my functions to fill the slides === */
@@ -24,31 +24,62 @@ let slideToShow = { features: [] };
 let currentSlideIndex = 0;
 
 
-function getData() {
+function getData(callback) {
   fetch('js/locations.json')
   .then(resp => resp.json())
   .then(data => { 
     slideToShow = data;
+    if (callback){
+      callback();
+    };
   })
   }; 
+
+
+function makeDataCollection(slide_number) {
+    return {
+      type: 'FeatureCollection',
+      features: slideToShow.features.filter(f => f.properties.slide === slide_number),
+    };
+  }
 
 
 function initialSlide() {
   const slideNOW = slides[0];
   fillSlide(slideNOW);
-  updateMap(mapToShow);
-  let layer = updateMap(mapToShow);
-  map.flyToBounds(layer.getBounds())
-
+  let mapToShow = makeDataCollection(slideNOW.slide);
+  updateMap(mapToShow, slideNOW)
+  let layer = updateMap(mapToShow, slideNOW);
+  if (slideNOW.dataUse !== "None") {
+    map.flyTo([29.9652, -89.97020], 12);
+  } else {
+    map.flyToBounds(layer.getBounds());
+  }
+  return layer
+  /*map.flyToBounds(layer.getBounds())*/
 };
+
+/* test function below */
+function TEST(i) {
+  fillSlide(slides[i]);
+  updateMap(slideToShow.features[i], slides[i])
+  let mapToShow = slideToShow.features[i];
+  return mapToShow
+  /*map.flyToBounds(layer.getBounds())*/
+};
+/* */
 
 function showCurrentSlide() {
   const slideNOW = slides[currentSlideIndex];
   fillSlide(slideNOW);
-  let mapToShow = slideToShow.features[currentSlideIndex];
+  let mapToShow = makeDataCollection(slideNOW.slide);  
   updateMap(mapToShow, slideNOW);
-  let layer = updateMap(mapToShow);
-  map.flyToBounds(layer.getBounds())
+  let layer = updateMap(mapToShow, slideNOW);
+  if (slideNOW.dataUse !== "None") {
+    map.flyTo([29.9652, -89.97020], 12);
+  } else {
+    map.flyToBounds(layer.getBounds());
+  }
 };
 
 
@@ -57,64 +88,116 @@ function fillSlide(slide) {
 
   slideTitleDiv.innerHTML = `<h2>${slide.title}</h2>`;
   slideContentDiv.innerHTML = converter.makeHtml(slide.content);
+  
 
-  if (slide.bounds) {
+  /*if (slide.bounds) {
     map.flyToBounds(slide.bounds);
   } else if (slide.era) {
     map.flyToBounds(layer.getBounds());
-  }
+  }*/
 };
 
 
 function updateMap(mapToShow, slide) {
   layerGroup.clearLayers();
-  iconuse = icon_order[currentSlideIndex];
+  iconuse = slide.icon;
   if (slide.dataUse === "cameraData") {
-    const geoJsonLayer = fetch(rtcc)
+    fetch(rtcc)
     .then(resp => resp.json())
     .then(data => {
       L.geoJSON(data, {onEachFeature: function(feature) {
         var markersClust = new L.MarkerClusterGroup();
-        var marker = L.marker([feature.geometry.coordinates[1], feature.geometry.coordinates[0]]);
+        var marker = L.marker([feature.geometry.coordinates[1], feature.geometry.coordinates[0]],
+          {icon: iconuse});
         markersClust.addLayer(marker);
         markersClust.addTo(layerGroup);
         }});
     });
+    
+    const geoJsonLayer = layerGroup;
     return geoJsonLayer;
-  };
+  }
 
   if (slide.dataUse === "demoData") {
-    const geoJsonLayer = fetch(demo)
+    fetch(demo)
     .then(resp => resp.json())
     .then(data => { 
       L.geoJSON(data, {style: styleDemo,  
         onEachFeature: onEachFeatureDemo
       }).addTo(layerGroup)
       });
+    
+    const geoJsonLayer =  layerGroup;
     return geoJsonLayer;
-  };
+  }
 
   if (slide.dataUse === "rentData") {
-    const geoJsonLayer = fetch(rent)
+    fetch(rent)
     .then(resp => resp.json())
     .then(data => { 
       L.geoJSON(data, {style: styleRent,  
         onEachFeature: onEachFeatureRent
       }).addTo(layerGroup)
       });
+    const geoJsonLayer =  layerGroup;  
     return geoJsonLayer;
 
   } else {
-    const geoJsonLayer = L.geoJSON(mapToShow, { pointToLayer: (p, latlng) => L.marker(latlng, 
-      {icon: iconuse}) })
-      .bindTooltip(l => l.feature.properties.label)
-      .addTo(layerGroup).openTooltip();
+    if (slide.icon && slide.img) {
+      const geoJsonLayer = L.geoJSON(mapToShow, { pointToLayer: (p, latlng) => L.marker(latlng, 
+        {icon: iconuse}) })
+        .bindTooltip(l => l.feature.properties.label)
+        .bindPopup(l => l.feature.properties.img, {
+          maxWidth : 560} ) 
+        .addTo(layerGroup).openPopup();
+
+        return geoJsonLayer;
+    } 
+    if (slide.icon && !slide.img) {
+      const geoJsonLayer = L.geoJSON(mapToShow, { pointToLayer: (p, latlng) => L.marker(latlng, 
+        {icon: iconuse}) })
+        .bindTooltip(l => l.feature.properties.label)
+        .addTo(layerGroup).openTooltip();
+
+        return geoJsonLayer;
+    } 
+    if (slide.img && !slide.icon) {
+      const geoJsonLayer = L.geoJSON(mapToShow, { pointToLayer: (p, latlng) => L.marker(latlng) })
+        .bindTooltip(l => l.feature.properties.label)
+        .bindPopup( l => l.feature.properties.img, {
+          maxWidth : 450}  )  /*getCaption(slide) +  getIMG(slide) */
+        .addTo(layerGroup).openPopup();
+
+        return geoJsonLayer;
+    } else {
+      const geoJsonLayer = L.geoJSON(mapToShow, { pointToLayer: (p, latlng) => L.marker(latlng) })
+        .bindTooltip(l => l.feature.properties.label)
+        .addTo(layerGroup).openTooltip();
+
+        return geoJsonLayer;
+    }
+
   
-    return geoJsonLayer;
+    
   };
 
 }
 
+function getIMG(slide) {
+  let image = slide.img;
+  return image;
+}
+
+function getIMG2(mapToShow) {
+  let image = slide.img;
+  return image;
+}
+
+
+function getCaption(slide) {
+  let caption = slide.caption;
+  return caption;
+}
 
 function nextSlide() {
   currentSlideIndex++;
@@ -141,6 +224,10 @@ slidePrevButton.addEventListener('click', prevSlide);
 slideNextButton.addEventListener('click', nextSlide);
 
 
-getData();
+
+getData(initialSlide);
 console.log("data in");
-initialSlide();
+
+console.log('istherestuffonthemap')
+
+

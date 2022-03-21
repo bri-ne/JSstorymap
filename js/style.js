@@ -1,33 +1,32 @@
 /* Map color Functions*/
 function getColor(d) {
-  return d > 99 ? '#fde725' :
-    d > 8  ? '#bddf26' :
-    d > 79  ? '#7ad151' :
-    d > 69  ? '#44bf70' :
-    d > 59   ? '#22a884' :
-    d > 49   ? '#21918c' :
-    d > 39   ? '#2a788e' :
-    d > 29   ? '#355f8d' :
-    d > 19   ? '#414487' :
-    d > 9   ? '#482475' :
-                '#440154';
+  return d > 99 ? '#f0f921' :
+    d > 89  ? '#fcce25' :
+    d > 79  ? '#fca636' :
+    d > 69  ? '#f2844b' :
+    d > 59   ? '#e16462' :
+    d > 49   ? '#cc4778' :
+    d > 39   ? '#b12a90' :
+    d > 29   ? '#8f0da4' :
+    d > 19   ? '#6a00a8' :
+    d > 9   ? '#41049d' :
+                '#0d0887';
   }
 
 /* DEMO */  
 function styleDemo(feature) {
   return {
       fillColor: getColor(feature.properties.NonWhite_P),
-      weight: 2,
-      opacity: 1,
+      weight: 0.5,
+      opacity: 0.7,
       color: 'white',
-      dashArray: '3',
-      fillOpacity: 0.7
+      fillOpacity: 0.5
   };
 }
 
 function onEachFeatureDemo(feature, layer){
   //use feature.properties to construct popup html
-  var popupContentDemo = `<p> Percent Non-White Population: ${feature.properties.NonWhite_P} <br> Camera Count: ${feature.properties.CameraCount} </p>`;
+  var popupContentDemo = `<p> Percent Non-White Population: ${Math.round(feature.properties.NonWhite_P)}% <br> Number of Nearby Cameras: ${feature.properties.Camera_Count} </p>`;
 
   layer.bindPopup(popupContentDemo);
   };
@@ -36,17 +35,16 @@ function onEachFeatureDemo(feature, layer){
 function styleRent(feature) {
   return {
       fillColor: getColor(feature.properties.P50_moreP),
-      weight: 2,
-      opacity: 1,
-      color: 'white',
-      dashArray: '3',
+      weight: 1,
+      opacity: 0.7,
+      color: 'gray',
       fillOpacity: 0.7
   };
 }
 
 function onEachFeatureRent(feature, layer){
   //use feature.properties to construct popup html
-  var popupContentRent = `<p> Percent Residents Spending 50% of Income on Rent: ${feature.properties.P50_moreP} <br> Camera Count: ${feature.properties.CameraCount} </p>`;
+  var popupContentRent = `<p> Percent Residents Spending Half or More of Their Income on Rent: ${Math.round(feature.properties.P50_moreP)}% <br> Number of Nearby Cameras: ${feature.properties.Camera_Count} </p>`;
 
   layer.bindPopup(popupContentRent);
   };
