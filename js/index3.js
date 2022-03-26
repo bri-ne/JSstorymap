@@ -11,7 +11,7 @@ const rtcc = 'https://raw.githubusercontent.com/bri-ne/JSstorymap/main/Data/RTCC
 const demo = 'https://raw.githubusercontent.com/bri-ne/JSstorymap/main/Data/census/DemoCamera_BG4326.geojson'
 const rent = 'https://raw.githubusercontent.com/bri-ne/JSstorymap/main/Data/census/RentCamera_BG4326.geojson'
 const schoolData =  'https://raw.githubusercontent.com/bri-ne/JSstorymap/main/Data/schoolonly/SchoolData_geo3452.geojson'
-
+const mort = 'https://raw.githubusercontent.com/bri-ne/JSstorymap/main/Data/census/RentCamera_BG4326.geojson'
 /* === These are my vars for my functions to fill the slides === */
 const slideTitleDiv = document.querySelector('.slide-title');
 const slideContentDiv = document.querySelector('.slide-content');
@@ -79,7 +79,7 @@ function showCurrentSlide() {
     map.flyTo([29.9652, -89.97020], 12);
   } else {
     map.flyToBounds(layer.getBounds());
-  }
+  } 
 };
 
 
@@ -88,13 +88,6 @@ function fillSlide(slide) {
 
   slideTitleDiv.innerHTML = `<h2>${slide.title}</h2>`;
   slideContentDiv.innerHTML = converter.makeHtml(slide.content);
-  
-
-  /*if (slide.bounds) {
-    map.flyToBounds(slide.bounds);
-  } else if (slide.era) {
-    map.flyToBounds(layer.getBounds());
-  }*/
 };
 
 
@@ -105,13 +98,14 @@ function updateMap(mapToShow, slide) {
     fetch(rtcc)
     .then(resp => resp.json())
     .then(data => {
+      var markersClust = new L.MarkerClusterGroup();
       L.geoJSON(data, {onEachFeature: function(feature) {
-        var markersClust = new L.MarkerClusterGroup();
         var marker = L.marker([feature.geometry.coordinates[1], feature.geometry.coordinates[0]],
           {icon: iconuse});
-        markersClust.addLayer(marker);
-        markersClust.addTo(layerGroup);
+          layerGroup.addLayer(marker);
+        
         }});
+       /* markersClust.addTo(layerGroup);*/
     });
     
     const geoJsonLayer = layerGroup;

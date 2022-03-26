@@ -16,8 +16,10 @@
 
 ## Questions
 
-- im confused why in your example all the data is loaded into a variable right off the bat? I thought we were trying to avoid that?
+- [X] im confused why in your example all the data is loaded into a variable right off the bat? I thought we were trying to avoid that?
   - re: lifecopllections 
-- I can't get my first point to show up. From googling I think it might be that the function called to show the first slide data runs before the fetch statement is compelted, so there is no data to show. how do i tell if this is in fact the case and then how do i fix it? Are there other reasons why this would be happening. 
-- i'm having a layer bounds issue, for data borught in differentl. I think it won't work on polygon layer b/c its looking for latlng? 
+- [X] I can't get my first point to show up. From googling I think it might be that the function called to show the first slide data runs before the fetch statement is compelted, so there is no data to show. how do i tell if this is in fact the case and then how do i fix it? Are there other reasons why this would be happening. 
+- [ ] i'm having a layer bounds issue, for data borught in differentl. I think it won't work on polygon layer b/c its looking for latlng? 
   - but it also won't work on the layer of just cameras point data. 
+- [X] marker cluster
+- [ ] legend

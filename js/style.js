@@ -35,10 +35,10 @@ function onEachFeatureDemo(feature, layer){
 function styleRent(feature) {
   return {
       fillColor: getColor(feature.properties.P50_moreP),
-      weight: 1,
+      weight: 0.5,
       opacity: 0.7,
-      color: 'gray',
-      fillOpacity: 0.7
+      color: 'white',
+      fillOpacity: 0.5
   };
 }
 
