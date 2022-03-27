@@ -18,7 +18,7 @@ h2 {
 
 p {
   font-family: 'Poppins', sans-serif;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .all-content{
@@ -32,7 +32,7 @@ p {
 
 .top-bar {
   width: 100%;
-  height: 10%;
+  height: 7%;
   overflow-y: auto;
   background-color: #fcba03;
   text-transform: uppercase;
@@ -44,11 +44,13 @@ p {
   z-index: 100;
   display: flex;
   flex-direction: column;
-  width: 25rem;
+  width: 30rem;
 }
 
 .slide-content {
   flex-grow: 1;
+  overflow-y: scroll;
+  margin-left: 1rem;
 }
 
 .slide-controls {
@@ -140,3 +142,36 @@ p {
   color: #fcba03;
 }
 
+.circle {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.info-legend {
+  padding: 0.5rem;
+  border: 0.2rem solid #1F1F1F;
+  background-color: rgb(255, 255, 255, 0.3);
+  display: flex; 
+  flex-direction: column;
+}
+.legendtext {
+  transform-origin: 0 0;
+  transform: rotate(-45deg);
+}
+
+.cuteTable th{
+  border-top: 0.2rem solid white;
+  text-align: center;
+}
+
+.cuteTable td{
+  padding: 0.5rem;
+  border-top: 0.1rem solid white;
+  text-align: center;
+}
+.cuteTable tr:hover{
+  background-color: #fcba03;
+  color: #1F1F1F;
+}
