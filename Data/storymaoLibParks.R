@@ -22,3 +22,4 @@ st_write(lib, "lib.geojson")
 parks%>%st_crs()
 
 
+for i in pois_glm_tuned[2]
