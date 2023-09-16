@@ -1,5 +1,14 @@
+let w = window. innerWidth;
+let map_zoom = (function(w) {
+  if (w > 927){
+    return 13
+  }else {
+    return 10
+  }
+})(); 
+let map = `L.map('map').setView([29.9652, -90.09820], ${map_zoom})`;
 
-let map = L.map('map').setView([29.9652, -90.09820], 13);
+
 
 let SchoolCensus = 'https://raw.githubusercontent.com/bri-ne/JSstorymap/main/Data/SchoolCensus.geojson'
 let rtcc = 'https://raw.githubusercontent.com/bri-ne/JSstorymap/main/Data/RTCC4326.geojson'

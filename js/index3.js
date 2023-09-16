@@ -1,4 +1,17 @@
-let map = L.map('map').setView([29.9652, -90.09820], 13);
+let w = window.innerWidth;
+let popup_max_width = window.innerWidth/4;
+
+let map_zoom = (function(w) {
+  if (w > 927){
+    return 13
+  }else {
+    return 11
+  }
+})(); 
+let map = L.map('map').setView([29.9652, -90.09820], map_zoom);
+
+
+
 const cartopositron = 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png'
 L.tileLayer(cartopositron, {
   attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.',
@@ -67,7 +80,7 @@ function initialSlide() {
     });
   }; 
   if (slideNOW.autobounds === 'no') {
-    map.flyTo([29.9652, -89.97020], 12); 
+    map.flyTo([29.9652, -89.97020], map_zoom); 
   } else {
     map.flyToBounds(layer.getBounds());
   }
@@ -82,7 +95,7 @@ function showCurrentSlide() {
   updateMap(mapToShow, slideNOW);
   let layer = updateMap(mapToShow, slideNOW);
   if (slideNOW.autobounds === 'no') {
-    map.flyTo([29.996276618892175, -90.00590556714026], 12);
+    map.flyTo([29.996276618892175, -90.00590556714026], map_zoom);
   } else {
     map.flyToBounds(layer.getBounds());
   };
@@ -95,7 +108,7 @@ function showCurrentSlide() {
   if (slideNOW.showimg) {
     layer.eachLayer(l => {
       l.bindPopup(l => l.feature.properties.img, {
-        maxWidth : 560} ) 
+        maxWidth : popup_max_width} ) 
       l.openPopup();
     });
   }; 
@@ -105,7 +118,7 @@ function showCurrentSlide() {
 function fillSlide(slide) {
   const converter = new showdown.Converter({ smartIndentationFix: true });
 
-  slideTitleDiv.innerHTML = `<h2>${slide.title}</h2>`;
+  slideTitleDiv.innerHTML = `<h2>${slide.title}</h2><button class="collapse-butt" onclick="moveAccordion('slide-content')">&#x21C5;&#xFE0E;</button>`;
   slideContentDiv.innerHTML = converter.makeHtml(slide.content);
 };
 

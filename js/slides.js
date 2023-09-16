@@ -11,8 +11,23 @@
     coords: ' '
   }
   */  
-  
+/*ACCORDION STUFF */
 
+
+function moveAccordion(header_id) {
+  let content = document.getElementById(header_id)
+  content.style.display = content.style.display == "block" ? "none" : "block";
+  console.log(content.parentElement.style.height);
+  if (content.style.display == "none"){
+    content.parentElement.style.height = "10%";
+  }else{
+    content.parentElement.style.height = null;
+  }
+  console.log(content.parentElement.style.height);
+
+}
+
+/*END ACCORDION STUFF */
 var markerCustom = L.icon({
   iconUrl: 'img/marker8b.png',
   iconSize: [8, 8],
@@ -121,3 +136,4 @@ const slide_5 = {
 
 
 const slides = [slide_00, slide_0, slide_1, slide_2, slide_3, slide_4, slide_5, slide_6]
+
