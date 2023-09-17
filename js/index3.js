@@ -75,7 +75,7 @@ function initialSlide() {
   if (slideNOW.showimg) {
     layer.eachLayer(l => {
       l.bindPopup(l => l.feature.properties.img, {
-        maxWidth : 560} ) 
+        maxWidth : popup_max_width, minWidth : 150} ) 
       l.openPopup();
     });
   }; 
@@ -108,7 +108,7 @@ function showCurrentSlide() {
   if (slideNOW.showimg) {
     layer.eachLayer(l => {
       l.bindPopup(l => l.feature.properties.img, {
-        maxWidth : popup_max_width} ) 
+        maxWidth : popup_max_width, minWidth:150} ) 
       l.openPopup();
     });
   }; 
@@ -208,7 +208,7 @@ function updateMap(mapToShow, slide) {
         {icon: iconuse}) })
         /* .bindTooltip(l => l.feature.properties.label, { permanent: true }) */
         .bindPopup(l => l.feature.properties.img, {
-          maxWidth : 560} ) 
+          maxWidth : popup_max_width, minWidth:150} ) 
         .addTo(layerGroup).openPopup();
 
         return geoJsonLayer;
@@ -225,7 +225,7 @@ function updateMap(mapToShow, slide) {
       const geoJsonLayer = L.geoJSON(mapToShow, { pointToLayer: (p, latlng) => L.marker(latlng) })
         .bindTooltip(l => l.feature.properties.label, { permanent: true })
         .bindPopup( l => l.feature.properties.img, {
-          maxWidth : 450}  )  /*getCaption(slide) +  getIMG(slide) */
+          maxWidth : popup_max_width, minWidth:150}  )  /*getCaption(slide) +  getIMG(slide) */
         .addTo(layerGroup).openPopup();
 
         return geoJsonLayer;

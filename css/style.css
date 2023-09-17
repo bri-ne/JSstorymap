@@ -39,10 +39,16 @@ p {
   overflow-y: auto;
   background-color: #fcba03;
   text-transform: uppercase;
-  color: #1F1F1F
+  color: #1F1F1F;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
-
+.top-bar p{
+  font-size:medium;
+}
 .slide-side {
   z-index: 100;
   display: flex;
@@ -203,19 +209,20 @@ p {
   padding-right: 3rem;
 }
 .collapse-butt{
-  font-size: x-small;
+  font-size: 20px;
   font-family: 'Poppins', sans-serif;
   transition: all 0.4s ease-out;
   background-color: #fcba03;
   color: #1F1F1F;
   border-color: #1F1F1F;
-  border-radius: 12px;
+  border-radius: 25px;
   margin: 1rem;
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 2.5rem;
+  width: 2.5rem;
   padding: 0;
   cursor: pointer;
   display: none;
+  font-weight: bold;
 }
 .collapse-butt:hover {
   background-color:black;
@@ -234,6 +241,15 @@ p {
   flex-direction: column;
   padding-left: 1rem;
   align-items: end;
+}
+
+.pop-img{
+  width:400px;
+  height:300px;
+}
+iframe{
+  width:400px;
+  height:300px;
 }
 /*MOBILE SIZING -----------------*/
 
@@ -363,5 +379,27 @@ p {
   }
   .collapse-butt{
     display: block;
+  }
+  .pop-img{
+    width:150px;
+    height:100px;
+  }
+  iframe{
+    width:150px;
+    height:100px;
+  }
+  .leaflet-container p{
+    font-size: 7px;
+  }
+  #map{
+    font-size: 8px;
+    display:flex;
+    flex-wrap: wrap;
+  }
+  .leaflet-popup-content{
+    width: 150px;
+  }
+  .top-bar p{
+    font-size:7px;
   }
 }
